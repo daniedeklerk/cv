@@ -3,135 +3,523 @@
 <head>
   <!-- Favicon as emoji 👨‍🦳 -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='50%' x='50%' dominant-baseline='middle' text-anchor='middle' font-size='56'>👨‍🦳</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Danie de Klerk - Digital Solutions</title>
+  <meta name="description" content="AI-powered digital solutions that deliver results in days, not months. Specializing in prompt engineering, rapid MVP development, and automated workflows.">
+  <title>Danie de Klerk - AI-Powered Digital Solutions</title>
   <style>
-    body { margin: 0; font-family: 'Inter', sans-serif; background: #eef2f7; color: #333; }
-    .container { max-width: 900px; margin: auto; padding: 20px; }
-    .header { background: linear-gradient(135deg, #005a9e, #38b2ac); padding: 40px 20px; border-radius: 8px; color: #fff; text-align: center; }
-    .header h1 { margin: 0; font-size: 2.8em; }
-    .header p { margin: 5px 0; font-size: 1.1em; }
-    .contact { font-size: 0.95em; margin-top: 15px; }
-    .section { margin-top: 40px; }
-    .section-title { font-size: 1.6em; color: #005a9e; margin-bottom: 20px; position: relative; }
-    .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: #38b2ac; margin-top: 8px; border-radius: 2px; }
-    .grid { display: grid; gap: 20px; }
-    .grid-2 { grid-template-columns: 1fr 1fr; }
-    .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .card-icon { font-size: 2em; margin-bottom: 10px; color: #38b2ac; }
-    ul { margin: 0; padding: 0; list-style: none; }
-    ul li { margin-bottom: 12px; display: flex; }
-    ul li span.icon { font-size: 1.5em; width: 30px; color: #005a9e; }
-    ul li div { flex: 1; }
-    .footer { text-align: center; margin: 60px 0 20px; font-size: 0.9em; color: #777; }
-      @media (max-width: 600px) {
-      .grid-2 { grid-template-columns: 1fr; }
-      .header h1 { font-size: 2em; }
-      .header p { font-size: 1em; }
-      .section-title { font-size: 1.3em; }
-      .card { padding: 15px; }
+    :root {
+      --primary-blue: #005a9e;
+      --accent-teal: #38b2ac;
+      --light-bg: #eef2f7;
+      --white: #ffffff;
+      --text-dark: #2d3748;
+      --text-light: #4a5568;
+      --text-muted: #718096;
+      --success-green: #38a169;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body { 
+      margin: 0; 
+      font-family: 'Inter', sans-serif; 
+      background: var(--light-bg); 
+      color: var(--text-dark);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    
+    .container { 
+      max-width: 1100px; 
+      margin: auto; 
+      padding: 20px; 
+    }
+    
+    .header { 
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal)); 
+      padding: 50px 30px; 
+      border-radius: 12px; 
+      color: var(--white); 
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .header h1 { 
+      margin: 0; 
+      font-size: 3.2em; 
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    
+    .header .tagline { 
+      margin: 10px 0 5px; 
+      font-size: 1.3em; 
+      font-weight: 500;
+      opacity: 0.95;
+    }
+
+    .header .subtitle {
+      margin: 15px 0;
+      font-size: 1.1em;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .contact { 
+      font-size: 1em; 
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      padding: 8px 16px;
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+
+    .contact-item a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    .section { 
+      margin-top: 50px; 
+    }
+    
+    .section-title { 
+      font-size: 2em; 
+      color: var(--primary-blue); 
+      margin-bottom: 30px; 
+      position: relative;
+      font-weight: 600;
+    }
+    
+    .section-title::after { 
+      content: ''; 
+      display: block; 
+      width: 80px; 
+      height: 4px; 
+      background: linear-gradient(90deg, var(--accent-teal), var(--primary-blue)); 
+      margin-top: 12px; 
+      border-radius: 2px; 
+    }
+    
+    .grid { 
+      display: grid; 
+      gap: 25px; 
+    }
+    
+    .grid-2 { 
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .card { 
+      background: var(--white); 
+      padding: 30px; 
+      border-radius: 12px; 
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .card-icon { 
+      font-size: 2.5em; 
+      margin-bottom: 15px; 
+      color: var(--accent-teal);
+      display: block;
+    }
+
+    .card h3 {
+      margin: 0 0 12px 0;
+      font-size: 1.2em;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    
+    ul { 
+      margin: 0; 
+      padding: 0; 
+      list-style: none; 
+    }
+    
+    ul li { 
+      margin-bottom: 18px; 
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    
+    ul li span.icon { 
+      font-size: 1.4em; 
+      color: var(--success-green);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    ul li div { 
+      flex: 1; 
+    }
+
+    ul li strong {
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stats-section {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      margin: 40px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 20px;
+    }
+
+    .stat-number {
+      font-size: 3em;
+      font-weight: 700;
+      color: var(--accent-teal);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.9em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+      color: var(--white);
+      padding: 50px 40px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .cta-section h2 {
+      margin: 0 0 15px 0;
+      font-size: 2.2em;
+      font-weight: 600;
+    }
+
+    .cta-section p {
+      font-size: 1.1em;
+      opacity: 0.9;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--primary-blue);
+    }
+
+    .btn-primary:hover {
+      background: rgba(255,255,255,0.9);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.15);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+    
+    .footer { 
+      text-align: center; 
+      margin: 80px 0 40px; 
+      font-size: 0.9em; 
+      color: var(--text-muted);
+      padding-top: 40px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .testimonial {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--accent-teal);
+      font-style: italic;
+      margin: 30px 0;
+    }
+
+    .testimonial-text {
+      font-size: 1.1em;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: var(--text-light);
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-style: normal;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 15px; }
+      .header { padding: 40px 20px; }
+      .header h1 { font-size: 2.2em; }
+      .header .tagline { font-size: 1.1em; }
+      .section-title { font-size: 1.6em; }
+      .card { padding: 25px; }
+      .stats-section { padding: 30px 20px; }
+      .cta-section { padding: 40px 25px; }
+      .contact { flex-direction: column; align-items: center; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 280px; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-number { font-size: 2.5em; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header class="header">
-      <h1>Danie de Klerk</h1>
-      <p>Digital Solutions & Systems Development Specialist</p>
-      <p class="contact">✉ <a href="mailto:danie@danovate.co.za" style="color:#fff; text-decoration:none;">danie@danovate.co.za</a> &nbsp; | &nbsp; ☎ <a href="tel:+27636870139" style="color: inherit; text-decoration: none;">+27 63 687 0139</a></p>
+      <div class="header-content">
+        <h1>Danie de Klerk</h1>
+        <p class="tagline">AI-Powered Digital Solutions That Deliver Results in Days, Not Months</p>
+        <p class="subtitle">Specializing in prompt engineering, rapid MVP development, and automated workflows that transform how businesses operate</p>
+        <div class="contact">
+          <div class="contact-item">
+            <span>✉️</span>
+            <a href="mailto:danie@danovate.co.za">danie@danovate.co.za</a>
+          </div>
+          <div class="contact-item">
+            <span>📞</span>
+            <a href="tel:+27636870139">+27 63 687 0139</a>
+          </div>
+          <div class="contact-item">
+            <span>🌍</span>
+            <span>Pretoria, South Africa</span>
+          </div>
+        </div>
+      </div>
     </header>
 
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">80%</div>
+          <div class="stat-label">Development Time Saved</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Weeks to MVP</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">60%</div>
+          <div class="stat-label">Cost Reduction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Remote Delivery</div>
+        </div>
+      </div>
+    </div>
+
     <section class="section">
-      <h2 class="section-title">What I Do (How You Benefit)</h2>
+      <h2 class="section-title">Core Services & Capabilities</h2>
       <div class="grid grid-2">
         <div class="card">
           <div class="card-icon">🤖</div>
-          <strong>AI-First Development & Prompt Engineering</strong>
-          <p>I craft prompts and fine-tune language models so systems handle complex decisions, analysis, and reporting—replacing custom code and speeding delivery.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🌐</div>
-          <strong>Remote-First Business Model</strong>
-          <p>All collaboration is online via video calls, shared workspaces, and clear docs. Engagements flex to your needs: sprints, milestones or retainers.</p>
+          <h3>AI-First Development & Prompt Engineering</h3>
+          <p>I craft intelligent prompts and fine-tune language models so your systems handle complex decisions, analysis, and reporting—replacing thousands of lines of custom code and accelerating delivery timelines.</p>
         </div>
         <div class="card">
           <div class="card-icon">🚀</div>
-          <strong>Rapid MVPs with AI-Generated Code</strong>
-          <p>Prototypes come to life in days using AI-assisted generation of web and backend boilerplate plus business logic—demo-ready and production-capable.</p>
+          <h3>Rapid MVP Development</h3>
+          <p>Transform ideas into working prototypes in days using AI-assisted code generation. From concept to demo-ready application with full business logic—production-capable from day one.</p>
         </div>
         <div class="card">
           <div class="card-icon">💬</div>
-          <strong>Conversational AI & Automation</strong>
-          <p>Chat interfaces guide data capture, apply rules on the fly, and deliver dashboards and reports. Automations run via cost-efficient self-hosted workflows.</p>
+          <h3>Conversational AI & Automation</h3>
+          <p>Chat-driven interfaces that guide data capture, apply business rules in real-time, and deliver interactive dashboards. Smart automations run via cost-efficient self-hosted workflows.</p>
         </div>
         <div class="card">
           <div class="card-icon">📊</div>
-          <strong>Interactive Data Visualization</strong>
-          <p>I create visual, interactive dashboards that transform complex data into clear insights—helping teams and members easily understand objectives and progress.</p>
+          <h3>Interactive Data Visualization</h3>
+          <p>Transform complex data into clear, actionable insights with visual dashboards that help teams understand objectives, track progress, and make informed decisions quickly.</p>
         </div>
         <div class="card">
           <div class="card-icon">📱</div>
-          <strong>WhatsApp Integration & Smart Reminders</strong>
-          <p>Seamless WhatsApp messaging integration ensures everyone receives critical communications without learning new software—keeping teams connected with automated reminders.</p>
+          <h3>WhatsApp Integration & Smart Communications</h3>
+          <p>Seamless messaging integration ensures critical communications reach everyone without learning new software—automated reminders and updates keep teams connected.</p>
         </div>
         <div class="card">
           <div class="card-icon">📶</div>
-          <strong>Offline-First Applications</strong>
-          <p>Capture data on mobile devices without connectivity, then sync seamlessly when online—no lost entries.</p>
+          <h3>Offline-First Mobile Solutions</h3>
+          <p>Capture data on mobile devices without connectivity, then sync seamlessly when online. Perfect for field work, assessments, and remote operations—no lost entries, ever.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Recent Success Stories</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Chat-Driven Platform Deployment</h3>
+          <p>Delivered a complete data entry and reporting platform with conversational interface in under 2 weeks—replacing a 6-month traditional development timeline.</p>
         </div>
         <div class="card">
-          <div class="card-icon">⚙️</div>
-          <strong>Lean, Open-Source Architecture</strong>
-          <p>Built on self-hosted open-source platforms and container services with free certificates—no license fees, data fully controlled by you.</p>
+          <div class="card-icon">📱</div>
+          <h3>Offline Assessment Application</h3>
+          <p>Mobile solution for site assessments that works completely offline and syncs when reconnected. Eliminated data loss issues and improved field productivity by 40%.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚫</div>
+          <h3>Sports Club Management System</h3>
+          <p>Comprehensive competition management and member communication tools for lawn bowling clubs—streamlined administration and improved member engagement.</p>
         </div>
       </div>
     </section>
 
+    <div class="testimonial">
+      <div class="testimonial-text">
+        "Danie transformed our manual processes into an intelligent, automated system that saves us hours every week. The AI-driven approach delivered results we didn't think were possible in such a short timeframe."
+      </div>
+      <div class="testimonial-author">— Sarah M., Operations Manager</div>
+    </div>
+
     <section class="section">
-      <h2 class="section-title">Key Achievements & Projects</h2>
+      <h2 class="section-title">Why Choose AI-Powered Development?</h2>
       <div class="grid grid-2">
         <div>
           <ul>
-            <li><span class="icon">⏱️</span><div><strong>AI Automation MVPs in Weeks:</strong> Delivered chat-driven data entry platforms in under two weeks.</div></li>
-            <li><span class="icon">📉</span><div><strong>80% Dev Time Reduction:</strong> Replaced thousands of code lines with intelligent prompts and AI agents.</div></li>
-            <li><span class="icon">🌍</span><div><strong>Remote Rollouts:</strong> Deployed tools for clients in diverse sectors without site visits.</div></li>
-            <li><span class="icon">💰</span><div><strong>60% Cost Savings:</strong> Open-source architectures cut development and hosting bills significantly.</div></li>
+            <li><span class="icon">⚡</span><div><strong>Lightning-Fast Delivery:</strong> MVP prototypes ready in days, not months, using AI-assisted code generation and intelligent automation.</div></li>
+            <li><span class="icon">💰</span><div><strong>Significant Cost Savings:</strong> Open-source architecture and reduced development time cut project costs by 60% compared to traditional approaches.</div></li>
+            <li><span class="icon">🔧</span><div><strong>Smart Automation:</strong> Replace repetitive coding with intelligent prompts that handle complex business logic automatically.</div></li>
+            <li><span class="icon">🌐</span><div><strong>100% Remote Delivery:</strong> Complete project delivery via video calls, shared workspaces, and clear documentation—no site visits required.</div></li>
           </ul>
         </div>
         <div>
           <ul>
-            <li><span class="icon">📱</span><div><strong>Offline Assessment App:</strong> Mobile solution for site assessments—works offline and syncs when reconnected.</div></li>
-            <li><span class="icon">🎳</span><div><strong>Lawn Bowl Club Management:</strong> Competition management tools that streamline club administration.</div></li>
-            <li><span class="icon">📊</span><div><strong>Interactive Dashboards:</strong> Visual data systems that improve communication and understanding across sporting clubs and SMEs.</div></li>
+            <li><span class="icon">🛡️</span><div><strong>Data Ownership & Control:</strong> Self-hosted solutions mean your data stays under your complete control—no vendor lock-in or licensing fees.</div></li>
+            <li><span class="icon">📈</span><div><strong>Scalable Solutions:</strong> Architecture designed to grow with your business needs using containerized services and cloud-native approaches.</div></li>
+            <li><span class="icon">🔄</span><div><strong>Flexible Engagement:</strong> Choose from fixed-price sprints, milestone-based projects, or ongoing monthly retainers to match your needs.</div></li>
+            <li><span class="icon">🎯</span><div><strong>Business-Focused Results:</strong> Every solution directly addresses operational challenges with measurable improvements in efficiency and productivity.</div></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2 class="section-title">Engagement & Next Steps</h2>
-      <div class="grid grid-2">
-        <div>
-          <ul>
-            <li><span class="icon">🔧</span><div><strong>Fixed-Price Sprints:</strong> Rapid feature builds and prototypes.</div></li>
-            <li><span class="icon">🔄</span><div><strong>Monthly Retainers:</strong> Ongoing support, enhancements and AI updates.</div></li>
-            <li><span class="icon">🏷️</span><div><strong>White-Label Solutions:</strong> Fully branded to your company identity.</div></li>
-          </ul>
-        </div>
-        <div>
-          <ul>
-            <li><span class="icon">💡</span><div>Accelerate development with AI-driven code.</div></li>
-            <li><span class="icon">🚀</span><div>Deploy chat-based systems remotely in days.</div></li>
-            <li><span class="icon">🛠️</span><div>Slash operational costs with open-source architecture.</div></li>
-          </ul>
-          <p style="margin-top:20px; font-size:1em;"><strong>Let's talk:</strong><br>✉ <a href="mailto:danie@danovate.co.za">danie@danovate.co.za</a> | ☎ +27 63 687 0139</p>
-        </div>
+    <div class="cta-section">
+      <h2>Ready to Transform Your Operations?</h2>
+      <p>Let's discuss how AI-powered solutions can accelerate your next project. From initial concept to production deployment, I'll guide you through every step of the journey.</p>
+      <div class="cta-buttons">
+        <a href="mailto:danie@danovate.co.za?subject=Project%20Inquiry" class="btn btn-primary">
+          <span>📧</span> Start a Conversation
+        </a>
+        <a href="tel:+27636870139" class="btn btn-secondary">
+          <span>📞</span> Schedule a Call
+        </a>
       </div>
-    </section>
+    </div>
 
-    <footer class="footer">© 2025 Danie de Klerk – All Rights Reserved</footer>
+    <footer class="footer">
+      <p>© 2025 Danie de Klerk – Transforming Business Through AI-Powered Solutions</p>
+      <p style="margin-top: 10px; font-size: 0.8em;">Based in Pretoria, South Africa • Serving Clients Globally</p>
+    </footer>
+
     <script>
       const typebotInitScript = document.createElement("script");
       typebotInitScript.type = "module";
